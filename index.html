@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- يبدأ بدون اتجاه محدد، سيتم إضافته بالسكريبت -->
+<!-- الكود بالكامل كما هو، مع تعديل بسيط جدًا في جزء التحميل -->
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
@@ -7,103 +7,45 @@
     <title data-lang-key="pageTitle">اختبار الذكاء في الحساب</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Segoe+Print&family=Share+Tech+Mono&display=swap');
-        
-        :root {
-            --matrix-bg: #000;
-            --matrix-green: #00ff41;
-            --matrix-dark-green: #008f11;
-            --white: #fff;
-            --glow-strength: 15px;
-        }
-
+        :root { --matrix-bg: #000; --matrix-green: #00ff41; --matrix-dark-green: #008f11; --white: #fff; --glow-strength: 15px; }
         * { box-sizing: border-box; }
-
         body {
-            font-family: 'Share Tech Mono', 'Cairo', monospace;
-            background-color: var(--matrix-bg);
-            color: var(--matrix-green);
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
+            font-family: 'Share Tech Mono', 'Cairo', monospace; background-color: var(--matrix-bg); color: var(--matrix-green);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
             min-height: 100vh; margin: 0; padding: 20px 0;
-            background-image:
-                linear-gradient(rgba(0, 255, 65, 0.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 65, 0.07) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(0, 255, 65, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 65, 0.07) 1px, transparent 1px);
             background-size: 35px 35px;
         }
-        
-        #level-selection,.container {
-            margin-bottom: 30px;
-        }
-
-        #level-selection {
-            background: transparent; border: 2px solid var(--matrix-green);
-            border-radius: 15px; padding: 30px 40px; text-align: center;
-            max-width: 550px; width: 90%;
-            box-shadow: 0 0 var(--glow-strength) var(--matrix-green) inset;
-            position: relative;
-        }
+        #level-selection,.container { margin-bottom: 30px; }
+        #level-selection { background: transparent; border: 2px solid var(--matrix-green); border-radius: 15px; padding: 30px 40px; text-align: center; max-width: 550px; width: 90%; box-shadow: 0 0 var(--glow-strength) var(--matrix-green) inset; position: relative; }
         #level-selection h1 { font-family: 'Cairo', sans-serif; font-size: 2.5em; margin: 20px 0 30px 0; text-shadow: 0 0 10px var(--matrix-green); }
-   .level-btn {
-            width: 100%; padding: 16px; margin-bottom: 15px; font-size: 1.4em;
-            border-radius: 8px; cursor: pointer; transition: all 0.3s;
-            background: #021a08; color: var(--matrix-green); border: 2px solid var(--matrix-dark-green);
-            font-family: 'Share Tech Mono', 'Cairo', monospace;
-        }
-   .level-btn:hover { background-color: var(--matrix-dark-green); color: var(--white); border-color: var(--matrix-green); box-shadow: 0 0 10px var(--matrix-green); }
-        #level-omega {
-            color: var(--white); background-color: var(--matrix-dark-green);
-            animation: flicker 1.5s infinite; font-weight: bold; text-shadow: 0 0 5px var(--white);
-        }
+      .level-btn { width: 100%; padding: 16px; margin-bottom: 15px; font-size: 1.4em; border-radius: 8px; cursor: pointer; transition: all 0.3s; background: #021a08; color: var(--matrix-green); border: 2px solid var(--matrix-dark-green); font-family: 'Share Tech Mono', 'Cairo', monospace; }
+      .level-btn:hover { background-color: var(--matrix-dark-green); color: var(--white); border-color: var(--matrix-green); box-shadow: 0 0 10px var(--matrix-green); }
+        #level-omega { color: var(--white); background-color: var(--matrix-dark-green); animation: flicker 1.5s infinite; font-weight: bold; text-shadow: 0 0 5px var(--white); }
         @keyframes flicker { 0%, 100% { box-shadow: 0 0 25px var(--matrix-green), 0 0 10px var(--white) inset; } 50% { box-shadow: none; } }
-
- .container {
-            display: none; background: #021a08; border: 2px solid var(--matrix-dark-green);
-            border-radius: 15px; padding: 25px; text-align: center;
-            max-width: 600px; width: 90%; position: relative;
-        }
-        
-       .lang-switcher { position: absolute; top: 20px; padding: 5px 12px; font-size: 1em; border: 1px solid var(--matrix-green); margin: 0; }
-        html[dir="rtl"].lang-switcher { left: 25px; }
-        html[dir="ltr"].lang-switcher { right: 25px; }
-
+      .container { display: none; background: #021a08; border: 2px solid var(--matrix-dark-green); border-radius: 15px; padding: 25px; text-align: center; max-width: 600px; width: 90%; position: relative; }
+      .lang-switcher { position: absolute; top: 20px; padding: 5px 12px; font-size: 1em; border: 1px solid var(--matrix-green); margin: 0; }
+        html[dir="rtl"].lang-switcher { left: 25px; } html[dir="ltr"].lang-switcher { right: 25px; }
         #timer-container { position: absolute; top: 20px; font-size: 1.4em; }
-        html[dir="rtl"] #timer-container { right: 25px; }
-        html[dir="ltr"] #timer-container { left: 25px; }
-
+        html[dir="rtl"] #timer-container { right: 25px; } html[dir="ltr"] #timer-container { left: 25px; }
         #back-to-menu { position: absolute; top: 70px; width: auto; padding: 5px 12px; font-size: 1em; border: 1px solid var(--matrix-green); margin: 0; }
-        html[dir="rtl"] #back-to-menu { right: 25px; }
-        html[dir="ltr"] #back-to-menu { left: 25px; }
-        
- .question-area {
-            margin-top: 40px; margin-bottom: 20px; background: #000; padding: 20px;
-            border-radius: 10px; border: 1px solid var(--matrix-dark-green);
-        }
-        #question {
-            font-family: 'Segoe Print', 'Cairo', sans-serif; font-weight: bold; font-size: 1.8em;
-            color: var(--matrix-green); text-shadow: 0 0 5px var(--matrix-green);
-            letter-spacing: 1.5px; min-height: 50px; display: flex;
-            align-items: center; justify-content: center; direction: ltr; flex-wrap: wrap;
-        }
-        
-        #answer {
-            width: 100%; padding: 12px; border: 2px solid var(--matrix-green);
-            border-radius: 8px; background-color: transparent; color: var(--white);
-            font-size: 1.8em; text-align: center; outline: none; pointer-events: none;
-            margin-bottom: 20px; text-shadow: 0 0 8px var(--matrix-green);
-        }
+        html[dir="rtl"] #back-to-menu { right: 25px; } html[dir="ltr"] #back-to-menu { left: 25px; }
+      .question-area { margin-top: 40px; margin-bottom: 20px; background: #000; padding: 20px; border-radius: 10px; border: 1px solid var(--matrix-dark-green); }
+        #question { font-family: 'Segoe Print', 'Cairo', sans-serif; font-weight: bold; font-size: 1.8em; color: var(--matrix-green); text-shadow: 0 0 5px var(--matrix-green); letter-spacing: 1.5px; min-height: 50px; display: flex; align-items: center; justify-content: center; direction: ltr; flex-wrap: wrap; }
+        #answer { width: 100%; padding: 12px; border: 2px solid var(--matrix-green); border-radius: 8px; background-color: transparent; color: var(--white); font-size: 1.8em; text-align: center; outline: none; pointer-events: none; margin-bottom: 20px; text-shadow: 0 0 8px var(--matrix-green); }
         #keyboard-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
- .key { background-color: transparent; border: 1px solid var(--matrix-dark-green); padding: 14px 0; font-size: 1.5em; }
- .key:active { transform: scale(0.95); background-color: var(--matrix-green); color: #000; }
+      .key { background-color: transparent; border: 1px solid var(--matrix-dark-green); padding: 14px 0; font-size: 1.5em; }
+      .key:active { transform: scale(0.95); background-color: var(--matrix-green); color: #000; }
         button { color: var(--matrix-green); border-radius: 8px; cursor: pointer; transition: all 0.2s; background-color: transparent; font-family: 'Share Tech Mono', 'Cairo', monospace; }
         button#submit-button, button#next-button { width: 100%; padding: 14px; font-size: 1.3em; margin-top: 15px; border: 2px solid var(--matrix-green); }
         button:hover { background-color: var(--matrix-green); color: #000; }
- .feedback { margin-top: 10px; height: 25px; font-size: 1.1em; }
+      .feedback { margin-top: 10px; height: 25px; font-size: 1.1em; }
         #score-container { display: flex; justify-content: space-around; margin-top: 12px; font-size: 1.2em; width: 100%; }
         button:disabled { opacity: 0.4; cursor: not-allowed; background-color: #021a08!important; color: var(--matrix-green)!important; }
-
         footer { text-align: center; max-width: 600px; width: 90%; padding: 20px; border-top: 1px solid var(--matrix-dark-green); margin-top: auto; }
         footer p { font-family: 'Cairo', sans-serif; font-size: 0.9em; color: #aaa; line-height: 1.6; margin-bottom: 20px; }
-        #download-btn { padding: 12px 25px; font-size: 1.1em; border: 1px solid var(--matrix-green); color: var(--matrix-green); }
+        #download-link { font-family: 'Share Tech Mono', monospace; padding: 12px 25px; font-size: 1.1em; border: 1px solid var(--matrix-green); color: var(--matrix-green); text-decoration: none; display: inline-block; }
+        #download-link:hover { background-color: var(--matrix-green); color: #000; }
     </style>
 </head>
 <body>
@@ -122,10 +64,10 @@
         <div class="question-area"><div id="question"></div></div>
         <input type="text" id="answer" placeholder="..." readonly>
         <div id="keyboard-container">
-             <button class="key" data-key="1">1</button> <button class="key" data-key="2">2</button> <button class="key" data-key="3">3</button>
-             <button class="key" data-key="4">4</button> <button class="key" data-key="5">5</button> <button class="key" data-key="6">6</button>
-             <button class="key" data-key="7">7</button> <button class="key" data-key="8">8</button> <button class="key" data-key="9">9</button>
-             <button class="key" data-key="-">-</button> <button class="key" data-key="0">0</button> <button class="key" id="key-backspace" data-key="backspace">⌫</button>
+            <button class="key" data-key="1">1</button> <button class="key" data-key="2">2</button> <button class="key" data-key="3">3</button>
+            <button class="key" data-key="4">4</button> <button class="key" data-key="5">5</button> <button class="key" data-key="6">6</button>
+            <button class="key" data-key="7">7</button> <button class="key" data-key="8">8</button> <button class="key" data-key="9">9</button>
+            <button class="key" data-key="-">-</button> <button class="key" data-key="0">0</button> <button class="key" id="key-backspace" data-key="backspace">⌫</button>
         </div>
         <button id="submit-button" data-lang-key="execute">EXECUTE</button>
         <button id="next-button" style="display:none;" data-lang-key="next">NEXT</button>
@@ -140,76 +82,34 @@
         <p data-lang-key="footerText">
             هذا الموقع تم تصميمه بالكامل بواسطة الذكاء الاصطناعي للتحديات اللطيفة، وسيتم تطويره في إصدارات لاحقة إن شاء الله. يمكنكم تحميل نسخة من ملف الموقع للتعلم وتشغيله أوفلاين.
         </p>
-        <button id="download-btn" data-lang-key="downloadButton">حمل نسختك V1.0</button>
+        <!-- --- بداية منطقة الإصلاح --- -->
+        <!-- تم استبدال الزر برابط مباشر. يجب أن يكون ملف main.zip في نفس المجلد -->
+        <a href="main.zip" id="download-link" download><span data-lang-key="downloadButton">حمل نسختك V1.0</span></a>
+        <!-- --- نهاية منطقة الإصلاح --- -->
     </footer>
 
     <script>
         const translations = {
-            ar: {
-                pageTitle: "اختبار الذكاء في الحساب",
-                langToggle: "English",
-                mainTitle: "اختر قدرك",
-                levelTeacher: "كابوس المُعلّم",
-                levelSatanic: "جحيمي",
-                levelOmega: "النهاية (Omega)",
-                backToMenu: "☰",
-                execute: "EXECUTE",
-                next: "NEXT",
-                correctLabel: "صحيح",
-                errorLabel: "خطأ",
-                timeUp: "انتهى الوقت! الإجابة:",
-                inputRequired: "أدخل إجابة",
-                correctMsg: "صحيح!",
-                errorMsg: "خطأ. الصحيح:",
-                footerText: "هذا الموقع تم تصميمه بالكامل بواسطة الذكاء الاصطناعي للتحديات اللطيفة، وسيتم تطويره في إصدارات لاحقة إن شاء الله. يمكنكم تحميل نسخة من ملف الموقع للتعلم وتشغيله أوفلاين.",
-                downloadButton: "حمل نسختك V1.0"
-            },
-            en: {
-                pageTitle: "Calculation IQ Test",
-                langToggle: "العربية",
-                mainTitle: "Choose Your Fate",
-                levelTeacher: "Teacher's Nightmare",
-                levelSatanic: "Hellish",
-                levelOmega: "The End (Omega)",
-                backToMenu: "☰",
-                execute: "EXECUTE",
-                next: "NEXT",
-                correctLabel: "CORRECT",
-                errorLabel: "ERROR",
-                timeUp: "TIME UP! ANS:",
-                inputRequired: "INPUT REQUIRED",
-                correctMsg: "CORRECT!",
-                errorMsg: "ERROR! ANS:",
-                footerText: "This website was entirely designed by AI for fun challenges and will be developed in future versions, God willing. You can download a copy of the site's files to learn from and run it offline.",
-                downloadButton: "Download Your Copy V1.0"
-            }
+            ar: { pageTitle: "اختبار الذكاء في الحساب", langToggle: "English", mainTitle: "اختر قدرك", levelTeacher: "كابوس المُعلّم", levelSatanic: "جحيمي", levelOmega: "النهاية (Omega)", backToMenu: "☰", execute: "EXECUTE", next: "NEXT", correctLabel: "صحيح", errorLabel: "خطأ", timeUp: "انتهى الوقت! الإجابة:", inputRequired: "أدخل إجابة", correctMsg: "صحيح!", errorMsg: "خطأ. الصحيح:", footerText: "هذا الموقع تم تصميمه بالكامل بواسطة الذكاء الاصطناعي للتحديات اللطيفة، وسيتم تطويره في إصدارات لاحقة إن شاء الله. يمكنكم تحميل نسخة من ملف الموقع للتعلم وتشغيله أوفلاين.", downloadButton: "حمل نسختك V1.0" },
+            en: { pageTitle: "Calculation IQ Test", langToggle: "العربية", mainTitle: "Choose Your Fate", levelTeacher: "Teacher's Nightmare", levelSatanic: "Hellish", levelOmega: "The End (Omega)", backToMenu: "☰", execute: "EXECUTE", next: "NEXT", correctLabel: "CORRECT", errorLabel: "ERROR", timeUp: "TIME UP! ANS:", inputRequired: "INPUT REQUIRED", correctMsg: "CORRECT!", errorMsg: "ERROR! ANS:", footerText: "This website was entirely designed by AI for fun challenges and will be developed in future versions, God willing. You can download a copy of the site's files to learn from and run it offline.", downloadButton: "Download Your Copy V1.0" }
         };
 
-        const levelSelectionDiv = document.getElementById('level-selection'); const gameContainer = document.querySelector('.container'); const questionElement = document.getElementById('question'); const answerInput = document.getElementById('answer'); const submitButton = document.getElementById('submit-button'); const nextButton = document.getElementById('next-button'); const feedbackMessage = document.getElementById('feedback-message'); const currentScoreSpan = document.getElementById('current-score'); const wrongScoreSpan = document.getElementById('wrong-score'); const timerSpan = document.getElementById('timer'); const keyboardContainer = document.getElementById('keyboard-container'); const backToMenuButton = document.getElementById('back-to-menu'); const downloadBtn = document.getElementById('download-btn');
+        const levelSelectionDiv = document.getElementById('level-selection'); const gameContainer = document.querySelector('.container'); const questionElement = document.getElementById('question'); const answerInput = document.getElementById('answer'); const submitButton = document.getElementById('submit-button'); const nextButton = document.getElementById('next-button'); const feedbackMessage = document.getElementById('feedback-message'); const currentScoreSpan = document.getElementById('current-score'); const wrongScoreSpan = document.getElementById('wrong-score'); const timerSpan = document.getElementById('timer'); const keyboardContainer = document.getElementById('keyboard-container'); const backToMenuButton = document.getElementById('back-to-menu');
         const langSwitchers = document.querySelectorAll('.lang-switcher');
         
         let correctAnswer = 0, currentScore = 0, wrongScore = 0; let timerInterval, timeLeft, timeLimit; let currentDifficulty = 'easy'; let currentLang = 'ar';
 
         function setLanguage(lang) {
             currentLang = lang;
-            const dir = lang === 'ar'? 'rtl' : 'ltr';
-            document.documentElement.lang = lang;
-            document.documentElement.dir = dir;
+            document.documentElement.lang = lang; document.documentElement.dir = lang === 'ar'? 'rtl' : 'ltr';
             document.querySelectorAll('[data-lang-key]').forEach(el => {
                 const key = el.dataset.langKey;
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
+                if (translations[lang][key]) { el.textContent = translations[lang][key]; }
             });
             localStorage.setItem('mathGameLang', lang);
         }
 
-        langSwitchers.forEach(switcher => {
-            switcher.addEventListener('click', () => {
-                const newLang = currentLang === 'ar'? 'en' : 'ar';
-                setLanguage(newLang);
-            });
-        });
+        langSwitchers.forEach(switcher => { switcher.addEventListener('click', () => { setLanguage(currentLang === 'ar'? 'en' : 'ar'); }); });
         
         function factorial(n) { if (n < 0) return NaN; if (n === 0) return 1; let r = 1; for (let i = 2; i <= n; i++) r *= i; return r; }
 
@@ -222,11 +122,9 @@
                 case 'teacher': timeLimit = 35; const p_n=rand(8,2),p=rand(3,2),s_b=rand(10,2),s_n=s_b*s_b,f_n=rand(5,3); questionText=`(${p_n}**${p}+Math.sqrt(${s_n}))*(${factorial(f_n)}%${rand(10,2)})`; questionDisplay=`(${p_n}^${p} + √${s_n}) × (${f_n}! % ${rand(10,2)})`; break;
                 case 'satanic': timeLimit = 60; const n1=rand(10,2), n2=rand(10,2), fact_n=rand(4,3); questionText=`((${n1}*(1/Math.cos(60*Math.PI/180)))+(${n2}*(1/Math.sin(30*Math.PI/180))))**2-(Math.tan(45*Math.PI/180)*${factorial(fact_n)})`; questionDisplay=`((${n1}×sec(60) + ${n2}×csc(30))² - tan(45)×${fact_n}!)`; break;
                 case 'omega':
-                    timeLimit = 60;
-                    const om_n1=rand(10,2), om_n2=rand(5,2), om_n3=rand(4,3), om_n4_base=rand(10,3), om_n4=om_n4_base*om_n4_base, om_n5=rand(10,2), om_n6=rand(20,2);
+                    timeLimit = 60; const om_n1=rand(10,2), om_n2=rand(5,2), om_n3=rand(4,3), om_n4_base=rand(10,3), om_n4=om_n4_base*om_n4_base, om_n5=rand(10,2), om_n6=rand(20,2);
                     questionText = `(((${om_n1}**${om_n2}) - ${factorial(om_n3)}) * Math.tan(45*Math.PI/180)) / (Math.sqrt(${om_n4}) + ${om_n5}) + (${om_n6} % 3)`;
-                    questionDisplay = `(((${om_n1}^${om_n2} - ${om_n3}!) × tan(45)) ÷ (√${om_n4} + ${om_n5})) + (${om_n6} % 3)`;
-                    break;
+                    questionDisplay = `(((${om_n1}^${om_n2} - ${om_n3}!) × tan(45)) ÷ (√${om_n4} + ${om_n5})) + (${om_n6} % 3)`; break;
             }
             
             correctAnswer = Math.round(new Function('return ' + questionText)());
@@ -247,13 +145,8 @@
         keyboardContainer.addEventListener('click', (event) => { if (!event.target.matches('.key') || submitButton.disabled) return; const key = event.target.dataset.key; if (key === 'backspace') { answerInput.value = answerInput.value.slice(0, -1); } else if (key === '-') { if (answerInput.value === '') { answerInput.value += key; } } else { if (answerInput.value.length < 10) { answerInput.value += key; } } });
         submitButton.addEventListener('click', checkAnswer);
         nextButton.addEventListener('click', generateQuestion);
-        downloadBtn.addEventListener('click', () => { const fullHtml = document.documentElement.outerHTML; const blob = new Blob([fullHtml], { type: 'text/html' }); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'omega_math_game.zip'; link.click(); URL.revokeObjectURL(link.href); link.remove(); });
-
-        // --- تحميل اللغة عند بدء التشغيل ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('mathGameLang') || 'ar';
-            setLanguage(savedLang);
-        });
+        
+        document.addEventListener('DOMContentLoaded', () => { const savedLang = localStorage.getItem('mathGameLang') || 'ar'; setLanguage(savedLang); });
     </script>
 </body>
 </html>
